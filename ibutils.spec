@@ -4,7 +4,7 @@
 #
 Name     : ibutils
 Version  : 1.5.7
-Release  : 1
+Release  : 2
 URL      : https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
 Source0  : https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
 Summary  : OpenIB Mellanox InfiniBand Diagnostic Tools
@@ -19,6 +19,8 @@ BuildRequires : flex
 BuildRequires : libibumad-dev
 BuildRequires : opensm-dev
 BuildRequires : tcl
+Patch1: 02-fix-format-warning.patch
+Patch2: CVE-2103-2561.patch
 
 %description
 ibutils provides IB network and path diagnostics.
@@ -71,6 +73,8 @@ lib components for the ibutils package.
 
 %prep
 %setup -q -n ibutils-1.5.7
+%patch1 -p1
+%patch2 -p1
 
 %build
 %configure --disable-static --enable-ibmgtsim \
