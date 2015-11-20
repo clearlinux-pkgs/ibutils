@@ -1,0 +1,2 @@
+--enable-ibmgtsim
+--with-tk-lib=/usr/lib/tk8.6
