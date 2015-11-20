@@ -1,0 +1,37 @@
+Description: Fix gcc "-Werror=format-security" errors
+ Fix log calls to use format "%s" to output string buffers.
+Author: Roland Dreier <rbd@debian.org>
+
+--- a/ibis/src/ibis_wrap.c
++++ b/ibis/src/ibis_wrap.c
+@@ -3186,7 +3186,7 @@
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 
+--- a/ibis/src/ibis.i
++++ b/ibis/src/ibis.i
+@@ -362,7 +362,7 @@
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 
+--- a/ibis/src/ibissh_wrap.cpp
++++ b/ibis/src/ibissh_wrap.cpp
+@@ -3186,7 +3186,7 @@
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 
