@@ -20,7 +20,7 @@ BuildRequires : libibumad-dev
 BuildRequires : opensm-dev
 BuildRequires : tcl
 Patch1: 02-fix-format-warning.patch
-Patch2: CVE-2103-2561.patch
+Patch2: CVE-2013-2561.patch
 
 %description
 ibutils provides IB network and path diagnostics.
