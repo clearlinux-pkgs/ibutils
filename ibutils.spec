@@ -4,7 +4,7 @@
 #
 Name     : ibutils
 Version  : 1.5.7
-Release  : 5
+Release  : 6
 URL      : https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
 Source0  : https://www.openfabrics.org/downloads/ibutils/ibutils-1.5.7-0.2.gbd7e502.tar.gz
 Summary  : OpenIB Mellanox InfiniBand Diagnostic Tools
@@ -77,6 +77,10 @@ lib components for the ibutils package.
 %patch2 -p1
 
 %build
+export CFLAGS="$CFLAGS -std=gnu++98 "
+export FCFLAGS="$CFLAGS -std=gnu++98 "
+export FFLAGS="$CFLAGS -std=gnu++98 "
+export CXXFLAGS="$CXXFLAGS -std=gnu++98 "
 %configure --disable-static --enable-ibmgtsim \
 --with-tk-lib=/usr/lib/tk8.6
 make V=1  %{?_smp_mflags}
